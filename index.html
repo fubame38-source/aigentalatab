@@ -9,7 +9,8 @@
 :root {
   --white: #ffffff; --gray-50: #f5f5f7; --gray-100: #e8e8ed; --gray-200: #d2d2d7;
   --gray-400: #86868b; --gray-600: #515154; --gray-900: #1d1d1f;
-  --blue: #0071e3; --blue-hover: #0077ed; --green: #34c759; --purple: #5e5ce6;
+  --blue: #0071e3; --blue-hover: #0077ed; --green: #34c759;
+  --orange: #ff6b35; --purple: #5e5ce6;
 }
 body { font-family: -apple-system, "SF Pro Text", BlinkMacSystemFont, sans-serif; background: var(--white); color: var(--gray-900); height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
 nav { height: 48px; background: rgba(255,255,255,0.92); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 0.5px solid var(--gray-200); display: flex; align-items: center; justify-content: space-between; padding: 0 22px; flex-shrink: 0; z-index: 100; }
@@ -27,7 +28,7 @@ nav { height: 48px; background: rgba(255,255,255,0.92); backdrop-filter: saturat
 .nav-btn.active { background: var(--gray-50); color: var(--gray-900); font-weight: 500; }
 .nav-btn-icon { width: 26px; height: 26px; border-radius: 6px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
 .nav-btn.active .nav-btn-icon { background: var(--gray-900); }
-.nav-btn.img-btn.active .nav-btn-icon { background: var(--purple); }
+.nav-btn.weekly-btn.active .nav-btn-icon { background: var(--orange); }
 .tags-wrap { padding: 5px 8px; display: flex; flex-wrap: wrap; gap: 4px; }
 .tag { font-size: 11px; color: var(--gray-600); background: var(--gray-50); border: 0.5px solid var(--gray-200); border-radius: 5px; padding: 2px 7px; }
 .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
@@ -46,75 +47,54 @@ nav { height: 48px; background: rgba(255,255,255,0.92); backdrop-filter: saturat
 .avatar { width: 26px; height: 26px; border-radius: 7px; flex-shrink: 0; margin-top: 2px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; }
 .msg.ai .avatar { background: var(--gray-900); color: var(--white); }
 .msg.user .avatar { background: var(--gray-100); color: var(--gray-600); font-size: 13px; }
-.bubble { max-width: 66%; padding: 10px 14px; border-radius: 14px; font-size: 14px; line-height: 1.65; white-space: pre-wrap; }
+.bubble { max-width: 72%; padding: 10px 14px; border-radius: 14px; font-size: 14px; line-height: 1.65; white-space: pre-wrap; }
 .msg.ai .bubble { background: var(--gray-50); color: var(--gray-900); border-top-left-radius: 4px; }
 .msg.user .bubble { background: var(--blue); color: #fff; border-top-right-radius: 4px; }
 .bubble strong { font-weight: 600; }
+.bubble em { font-style: italic; color: var(--gray-600); }
 .dots { display: flex; gap: 3px; align-items: center; padding: 2px 0; }
 .dots span { width: 4px; height: 4px; border-radius: 50%; background: var(--gray-400); animation: dot 1.2s infinite; }
 .dots span:nth-child(2) { animation-delay: 0.15s; }
 .dots span:nth-child(3) { animation-delay: 0.3s; }
 @keyframes dot { 0%,80%,100%{transform:scale(1);opacity:0.4} 40%{transform:scale(1.3);opacity:1} }
 
-/* IMAGE PANEL */
-.image-panel { flex: 1; overflow-y: auto; padding: 24px 28px; display: flex; flex-direction: column; gap: 16px; scrollbar-width: thin; }
-.sec-title { font-size: 11px; font-weight: 600; color: var(--gray-400); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 6px; }
+/* WEEKLY PANEL */
+.weekly-panel { flex: 1; overflow-y: auto; padding: 24px 28px; display: flex; flex-direction: column; gap: 16px; scrollbar-width: thin; }
+.weekly-hero { background: linear-gradient(135deg, #1d1d1f 0%, #3a3a3c 100%); border-radius: 14px; padding: 24px; color: white; text-align: center; }
+.weekly-hero-icon { font-size: 32px; margin-bottom: 8px; }
+.weekly-hero-title { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
+.weekly-hero-sub { font-size: 13px; opacity: 0.6; margin-bottom: 16px; }
+.weekly-gen-btn { background: var(--orange); color: white; border: none; border-radius: 10px; padding: 12px 28px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: opacity 0.15s, transform 0.1s; }
+.weekly-gen-btn:hover { opacity: 0.9; }
+.weekly-gen-btn:active { transform: scale(0.97); }
+.weekly-gen-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-/* Upload zone */
-.upload-zone {
-  border: 1.5px dashed var(--gray-200); border-radius: 12px;
-  padding: 28px 20px; text-align: center; cursor: pointer;
-  transition: all 0.15s; background: var(--gray-50);
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
-}
-.upload-zone:hover { border-color: var(--purple); background: #f5f4ff; }
-.upload-zone.has-image { border-style: solid; border-color: var(--purple); padding: 10px; background: var(--white); }
-.upload-icon { font-size: 28px; }
-.upload-text { font-size: 13px; color: var(--gray-600); font-weight: 500; }
-.upload-sub { font-size: 11px; color: var(--gray-400); }
-.preview-img { width: 100%; max-height: 200px; object-fit: contain; border-radius: 8px; display: none; }
-.preview-img.show { display: block; }
-.change-btn { font-size: 11px; color: var(--purple); cursor: pointer; margin-top: 4px; }
-
-/* Problem grid */
-.problem-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
-.problem-card {
-  padding: 10px 12px; border-radius: 8px;
-  border: 0.5px solid var(--gray-200); background: var(--gray-50);
-  cursor: pointer; transition: all 0.12s;
-  font-size: 13px; color: var(--gray-600);
-  display: flex; align-items: center; gap: 8px;
-}
-.problem-card:hover { border-color: var(--purple); background: #f5f4ff; color: var(--gray-900); }
-.problem-card.selected { border-color: var(--purple); background: #f0effe; color: var(--gray-900); font-weight: 500; }
-
-/* Format */
-.format-row { display: flex; gap: 8px; }
-.format-btn { flex: 1; padding: 8px; border-radius: 8px; border: 0.5px solid var(--gray-200); background: var(--gray-50); cursor: pointer; font-family: inherit; font-size: 12px; color: var(--gray-600); text-align: center; transition: all 0.12s; }
-.format-btn:hover { border-color: var(--purple); background: #f5f4ff; }
-.format-btn.selected { border-color: var(--purple); background: #f0effe; color: var(--gray-900); font-weight: 500; }
-.format-btn div:first-child { font-size: 16px; margin-bottom: 3px; }
-
-.gen-btn { width: 100%; padding: 12px; background: var(--purple); color: #fff; border: none; border-radius: 10px; font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer; transition: opacity 0.15s, transform 0.1s; }
-.gen-btn:hover { opacity: 0.9; }
-.gen-btn:active { transform: scale(0.98); }
-.gen-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
-
-.loading-state { display: none; flex-direction: column; align-items: center; gap: 10px; padding: 28px; background: var(--gray-50); border-radius: 12px; }
-.loading-state.show { display: flex; }
-.spinner { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--gray-200); border-top-color: var(--purple); animation: spin 0.8s linear infinite; }
+.weekly-loading { display: none; flex-direction: column; align-items: center; gap: 10px; padding: 24px; }
+.weekly-loading.show { display: flex; }
+.spinner { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--gray-200); border-top-color: var(--orange); animation: spin 0.8s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
-.loading-text { font-size: 13px; color: var(--gray-400); }
+.weekly-loading-text { font-size: 13px; color: var(--gray-400); }
 
-.result-area { display: none; flex-direction: column; gap: 12px; }
-.result-area.show { display: flex; }
-.result-img { width: 100%; border-radius: 12px; border: 0.5px solid var(--gray-200); display: block; }
-.result-hint { font-size: 12px; color: var(--gray-400); background: var(--gray-50); border-radius: 8px; padding: 10px 12px; line-height: 1.6; }
-.result-actions { display: flex; gap: 8px; }
-.action-btn { flex: 1; padding: 9px; border-radius: 8px; font-family: inherit; font-size: 13px; cursor: pointer; transition: all 0.1s; border: 0.5px solid var(--gray-200); background: var(--gray-50); color: var(--gray-900); }
-.action-btn:hover { background: var(--gray-100); }
-.action-btn.primary { background: var(--purple); color: #fff; border-color: var(--purple); }
-.action-btn.primary:hover { opacity: 0.9; }
+.weekly-result { display: none; flex-direction: column; gap: 12px; }
+.weekly-result.show { display: flex; }
+
+.week-card { border-radius: 12px; border: 0.5px solid var(--gray-200); overflow: hidden; }
+.week-card-header { padding: 12px 16px; display: flex; align-items: center; gap: 10px; border-bottom: 0.5px solid var(--gray-100); }
+.week-card-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+.week-card-icon.content1 { background: #fff0e6; }
+.week-card-icon.content2 { background: #e8f4ff; }
+.week-card-icon.ad { background: #f0effe; }
+.week-card-icon.bonus { background: #e8faf0; }
+.week-card-title { font-size: 13px; font-weight: 600; color: var(--gray-900); }
+.week-card-sub { font-size: 11px; color: var(--gray-400); margin-top: 1px; }
+.week-card-body { padding: 14px 16px; font-size: 13px; line-height: 1.7; color: var(--gray-600); white-space: pre-wrap; background: var(--gray-50); }
+.week-card-body strong { color: var(--gray-900); font-weight: 600; }
+
+.copy-btn { width: 100%; padding: 8px; background: white; border: 0.5px solid var(--gray-200); border-radius: 0 0 11px 11px; font-family: inherit; font-size: 12px; color: var(--gray-400); cursor: pointer; transition: all 0.1s; }
+.copy-btn:hover { background: var(--gray-50); color: var(--gray-900); }
+
+.regen-btn { width: 100%; padding: 10px; background: var(--gray-50); border: 0.5px solid var(--gray-200); border-radius: 10px; font-family: inherit; font-size: 13px; color: var(--gray-600); cursor: pointer; transition: all 0.1s; }
+.regen-btn:hover { background: var(--gray-100); color: var(--gray-900); }
 
 /* INPUT */
 .input-area { padding: 12px 28px 18px; border-top: 0.5px solid var(--gray-100); background: var(--white); flex-shrink: 0; }
@@ -133,7 +113,7 @@ textarea::placeholder { color: var(--gray-400); }
 ::-webkit-scrollbar-thumb { background: var(--gray-200); border-radius: 2px; }
 @media (max-width: 580px) {
   .sidebar { display: none; }
-  .messages, .image-panel { padding: 18px 16px; }
+  .messages, .weekly-panel { padding: 18px 16px; }
   .input-area { padding: 10px 16px 16px; }
   .bubble { max-width: 88%; }
 }
@@ -146,17 +126,24 @@ textarea::placeholder { color: var(--gray-400); }
 </nav>
 <div class="app">
   <aside class="sidebar">
+    <div class="sidebar-label">⚡ Haftalık Plan</div>
+    <button class="nav-btn weekly-btn" onclick="setMode('weekly')" id="btn-weekly">
+      <div class="nav-btn-icon">📅</div>Bu Hafta Ne Yapmalıyım
+    </button>
+
     <div class="sidebar-label">İçerik</div>
     <button class="nav-btn active" onclick="setMode('content')" id="btn-content"><div class="nav-btn-icon">📸</div>İçerik & Hook</button>
+
     <div class="sidebar-label">Reklam</div>
-    <button class="nav-btn img-btn" onclick="setMode('image')" id="btn-image"><div class="nav-btn-icon">🎨</div>Reklam Görseli</button>
     <button class="nav-btn" onclick="setMode('ads')" id="btn-ads"><div class="nav-btn-icon">🎯</div>Meta Reklam Metni</button>
     <button class="nav-btn" onclick="setMode('shopify')" id="btn-shopify"><div class="nav-btn-icon">🛍️</div>Shopify Sayfası</button>
+
     <div class="sidebar-label">Büyüme</div>
     <button class="nav-btn" onclick="setMode('seo')" id="btn-seo"><div class="nav-btn-icon">🔍</div>SEO & Google</button>
     <button class="nav-btn" onclick="setMode('competitor')" id="btn-competitor"><div class="nav-btn-icon">🧭</div>Rakip Analizi</button>
     <button class="nav-btn" onclick="setMode('product')" id="btn-product"><div class="nav-btn-icon">💡</div>Yeni Ürün</button>
     <button class="nav-btn" onclick="setMode('biz')" id="btn-biz"><div class="nav-btn-icon">📈</div>İş Geliştirme</button>
+
     <div class="sidebar-label">Marka</div>
     <div class="tags-wrap">
       <span class="tag">Patentli taburet</span><span class="tag">1M+ TL</span>
@@ -182,53 +169,58 @@ textarea::placeholder { color: var(--gray-400); }
       </div>
     </div>
 
-    <!-- IMAGE PANEL -->
-    <div class="image-panel" id="image-panel" style="display:none;">
-      <div>
-        <div class="sec-title">Ürün Görselini Yükle</div>
-        <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()">
-          <div class="upload-icon">📷</div>
-          <div class="upload-text">AlaTab görselini buraya sürükle veya tıkla</div>
-          <div class="upload-sub">JPG, PNG — reklama dönüştürülecek</div>
-          <img class="preview-img" id="preview-img" src="" alt="">
-          <div class="change-btn" id="change-btn" style="display:none">Görseli değiştir</div>
-        </div>
-        <input type="file" id="file-input" accept="image/*" style="display:none" onchange="handleFile(event)">
+    <!-- WEEKLY PANEL -->
+    <div class="weekly-panel" id="weekly-panel" style="display:none;">
+      <div class="weekly-hero">
+        <div class="weekly-hero-icon">📅</div>
+        <div class="weekly-hero-title">Bu Hafta Ne Yapmalıyım?</div>
+        <div class="weekly-hero-sub">2 içerik + 1 reklam + bonus taktik — hazır plan</div>
+        <button class="weekly-gen-btn" id="weekly-gen-btn" onclick="generateWeekly()">✦ Haftalık Planımı Üret</button>
       </div>
 
-      <div>
-        <div class="sec-title">Problem / Mesaj Seç</div>
-        <div class="problem-grid">
-          <div class="problem-card selected" onclick="selectProblem(this,'kabizlik')" data-p="kabizlik">💩 Kabızlık Çözümü</div>
-          <div class="problem-card" onclick="selectProblem(this,'hemoroit')" data-p="hemoroit">🩺 Hemoroit Önleme</div>
-          <div class="problem-card" onclick="selectProblem(this,'kolon')" data-p="kolon">💚 Kolon Sağlığı</div>
-          <div class="problem-card" onclick="selectProblem(this,'genel')" data-p="genel">🪵 Genel Ürün Reklamı</div>
-        </div>
-      </div>
-
-      <div>
-        <div class="sec-title">Format</div>
-        <div class="format-row">
-          <button class="format-btn selected" onclick="selectFormat(this,'1:1')" data-f="1:1"><div>⬜</div><div>Kare</div><div style="font-size:10px;color:var(--gray-400)">1080×1080</div></button>
-          <button class="format-btn" onclick="selectFormat(this,'4:5')" data-f="4:5"><div>🟦</div><div>Feed</div><div style="font-size:10px;color:var(--gray-400)">1080×1350</div></button>
-          <button class="format-btn" onclick="selectFormat(this,'9:16')" data-f="9:16"><div>📱</div><div>Story</div><div style="font-size:10px;color:var(--gray-400)">1080×1920</div></button>
-        </div>
-      </div>
-
-      <button class="gen-btn" id="gen-btn" onclick="generateImage()">✦ Reklam Görseli Üret</button>
-
-      <div class="loading-state" id="loading-state">
+      <div class="weekly-loading" id="weekly-loading">
         <div class="spinner"></div>
-        <div class="loading-text">Görsel üretiliyor, 20-30 saniye sürebilir...</div>
+        <div class="weekly-loading-text">Haftanın planı hazırlanıyor...</div>
       </div>
 
-      <div class="result-area" id="result-area">
-        <img class="result-img" id="result-img" src="" alt="Üretilen reklam görseli">
-        <div class="result-hint" id="result-hint"></div>
-        <div class="result-actions">
-          <button class="action-btn" onclick="generateImage()">🔄 Yeniden Üret</button>
-          <button class="action-btn primary" onclick="downloadResult()">⬇ İndir</button>
+      <div class="weekly-result" id="weekly-result">
+        <div class="week-card" id="card-content1">
+          <div class="week-card-header">
+            <div class="week-card-icon content1">📸</div>
+            <div><div class="week-card-title">İçerik 1</div><div class="week-card-sub">Bu hafta çekeceksin</div></div>
+          </div>
+          <div class="week-card-body" id="body-content1"></div>
+          <button class="copy-btn" onclick="copyText('body-content1')">Kopyala</button>
         </div>
+
+        <div class="week-card" id="card-content2">
+          <div class="week-card-header">
+            <div class="week-card-icon content2">🎬</div>
+            <div><div class="week-card-title">İçerik 2</div><div class="week-card-sub">Bu hafta çekeceksin</div></div>
+          </div>
+          <div class="week-card-body" id="body-content2"></div>
+          <button class="copy-btn" onclick="copyText('body-content2')">Kopyala</button>
+        </div>
+
+        <div class="week-card" id="card-ad">
+          <div class="week-card-header">
+            <div class="week-card-icon ad">🎯</div>
+            <div><div class="week-card-title">Reklam Planı</div><div class="week-card-sub">Bu hafta vereceksin</div></div>
+          </div>
+          <div class="week-card-body" id="body-ad"></div>
+          <button class="copy-btn" onclick="copyText('body-ad')">Kopyala</button>
+        </div>
+
+        <div class="week-card" id="card-bonus">
+          <div class="week-card-header">
+            <div class="week-card-icon bonus">⚡</div>
+            <div><div class="week-card-title">Bonus Taktik</div><div class="week-card-sub">Ekstra kazanım</div></div>
+          </div>
+          <div class="week-card-body" id="body-bonus"></div>
+          <button class="copy-btn" onclick="copyText('body-bonus')">Kopyala</button>
+        </div>
+
+        <button class="regen-btn" onclick="generateWeekly()">🔄 Yeni Plan Üret</button>
       </div>
     </div>
 
@@ -257,9 +249,50 @@ const CTX = `Sen AlaTab markasının özel AI asistanısın. AlaTab hakkında he
 MARKA: Türkiye'nin patentli ahşap tuvalet taburesi. Squatty Potty'nin Türk versiyonu. alatab.com.tr
 FİNANS: 1M+ TL ciro. Ürün fiyatı 1.799 TL. Meta Ads CPA ~275-355 TL.
 PLATFORM: Shopify (Savor teması). Instagram organik + Meta Ads ile büyüme.
-VİRAL FORMAT: "Sosyal keşif" POV. Ürün adı sesli söylenmiyor. El kamerası. Hard cut. Sessiz açılış <3sn. Trend müzik. Altyazı. ElevenLabs voiceover.
-HEDEF KİTLE: 25-50 yaş Türkler. Sağlık ve doğallık ilgisi.
-ÜRÜN FAYDALARI: Çömelme pozisyonu, hemoroit önleme, kabızlık giderme, kolon sağlığı.`;
+VİRAL FORMAT: "Sosyal keşif" POV — örn: "Kayınvalidenin banyosuna girdim bir de ne göreyim". Ürün adı sesli söylenmiyor. El kamerası. Hard cut. Sessiz açılış <3sn. Trend müzik. Altyazı. ElevenLabs voiceover. Yüz/kişisel ses yok.
+HEDEF KİTLE: 25-50 yaş Türkler. Sağlık ve doğallık ilgisi. Anneler ve ev hanımları.
+ÜRÜN FAYDALARI: Çömelme pozisyonu, hemoroit önleme, kabızlık giderme, kolon sağlığı.
+HAFTALIK TEMPO: Haftada 2 içerik + 1 reklam yapıyor.`;
+
+const WEEKLY_SYSTEM = CTX + `
+
+Sen AlaTab için haftalık içerik ve reklam planı oluşturuyorsun.
+Kullanıcı haftada 2 içerik çekiyor, 1 reklam veriyor.
+
+SADECE JSON formatında cevap ver, başka hiçbir şey yazma:
+{
+  "content1": {
+    "baslik": "İçerik 1 başlığı",
+    "format": "POV/Eğitim/Karşılaştırma vs",
+    "hook": "İlk 3 saniye hook cümlesi",
+    "senaryo": "Kısa çekim planı (3-4 adım)",
+    "voiceover": "ElevenLabs için sesli metin",
+    "muzik": "Müzik türü önerisi",
+    "caption": "Instagram caption metni"
+  },
+  "content2": {
+    "baslik": "İçerik 2 başlığı",
+    "format": "POV/Eğitim/Karşılaştırma vs",
+    "hook": "İlk 3 saniye hook cümlesi",
+    "senaryo": "Kısa çekim planı (3-4 adım)",
+    "voiceover": "ElevenLabs için sesli metin",
+    "muzik": "Müzik türü önerisi",
+    "caption": "Instagram caption metni"
+  },
+  "ad": {
+    "gorsel_onerisi": "Hangi görseli kullan",
+    "hedef_kitle": "Kime ver",
+    "butce": "Kaç TL harca",
+    "sure": "Kaç gün çalıştır",
+    "primary_text": "Reklam ana metni",
+    "baslik": "Reklam başlığı",
+    "cta": "CTA butonu"
+  },
+  "bonus": {
+    "taktik": "Bu hafta ekstra ne yap",
+    "aciklama": "Neden ve nasıl"
+  }
+}`;
 
 const M = {
   content: { title:'İçerik & Hook Formülleri', sub:'Viral Reels, TikTok ve hook fikirleri', sys: CTX+'\n\nİÇERİK modülü: Viral Reels/TikTok fikirleri. Hook, çekim planı, ElevenLabs metni, müzik, neden viral olur. Türkçe.', chips:['🔥 Viral fikir üret','📱 POV discovery formatı','🎬 ElevenLabs voiceover','🪝 5 farklı hook','😱 Şok/merak formatı','👨‍👩‍👧 Sosyal kanıt formatı'] },
@@ -272,21 +305,19 @@ const M = {
 };
 
 let cur='content', msgs=[], busy=false;
-let selProblem='kabizlik', selFormat='1:1';
-let uploadedBase64=null, lastResultUrl=null;
 
 function setMode(m) {
   cur=m; msgs=[];
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('btn-'+m).classList.add('active');
-  const isImg = m==='image';
-  document.getElementById('messages').style.display = isImg?'none':'flex';
-  document.getElementById('image-panel').style.display = isImg?'flex':'none';
-  document.getElementById('input-area').style.display = isImg?'none':'block';
-  document.getElementById('model-tag').textContent = isImg?'Replicate Flux Dev':'Claude Sonnet';
-  if (isImg) {
-    document.getElementById('m-title').textContent='Reklam Görseli Üret';
-    document.getElementById('m-sub').textContent='Ürün görselini yükle, AI reklama dönüştürsün';
+  const isWeekly = m==='weekly';
+  document.getElementById('messages').style.display = isWeekly?'none':'flex';
+  document.getElementById('weekly-panel').style.display = isWeekly?'flex':'none';
+  document.getElementById('input-area').style.display = isWeekly?'none':'block';
+  document.getElementById('model-tag').textContent = 'Claude Sonnet';
+  if (isWeekly) {
+    document.getElementById('m-title').textContent='Bu Hafta Ne Yapmalıyım?';
+    document.getElementById('m-sub').textContent='2 içerik + 1 reklam + bonus taktik';
     return;
   }
   document.getElementById('m-title').textContent=M[m].title;
@@ -295,68 +326,84 @@ function setMode(m) {
   document.getElementById('messages').innerHTML=`<div class="empty-state" id="empty"><div class="empty-icon">${{content:'📸',ads:'🎯',shopify:'🛍️',seo:'🔍',competitor:'🧭',product:'💡',biz:'📈'}[m]}</div><div class="empty-title">${M[m].title}</div><div class="empty-desc">${M[m].sub}</div></div>`;
 }
 
-function handleFile(e) {
-  const file = e.target.files[0]; if (!file) return;
-  const reader = new FileReader();
-  reader.onload = function(ev) {
-    const base64 = ev.target.result.split(',')[1];
-    uploadedBase64 = base64;
-    const zone = document.getElementById('upload-zone');
-    const img = document.getElementById('preview-img');
-    img.src = ev.target.result;
-    img.classList.add('show');
-    zone.classList.add('has-image');
-    document.getElementById('change-btn').style.display='block';
-  };
-  reader.readAsDataURL(file);
-}
-
-function selectProblem(el, p) {
-  document.querySelectorAll('.problem-card').forEach(c=>c.classList.remove('selected'));
-  el.classList.add('selected'); selProblem=p;
-}
-
-function selectFormat(el, f) {
-  document.querySelectorAll('.format-btn').forEach(c=>c.classList.remove('selected'));
-  el.classList.add('selected'); selFormat=f;
-}
-
-async function generateImage() {
-  if (!uploadedBase64) { alert('Önce bir ürün görseli yükle!'); return; }
-  document.getElementById('gen-btn').disabled=true;
-  document.getElementById('loading-state').classList.add('show');
-  document.getElementById('result-area').classList.remove('show');
+async function generateWeekly() {
+  document.getElementById('weekly-gen-btn').disabled=true;
+  document.getElementById('weekly-loading').classList.add('show');
+  document.getElementById('weekly-result').classList.remove('show');
 
   try {
-    const res = await fetch(WORKER+'image', {
+    const res = await fetch(WORKER, {
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ imageBase64: uploadedBase64, problem: selProblem, format: selFormat })
+      body: JSON.stringify({
+        messages:[{role:'user', content:'Bu hafta için AlaTab içerik ve reklam planı oluştur. Tamamen farklı ve yaratıcı ol.'}],
+        mode: WEEKLY_SYSTEM
+      })
     });
     const data = await res.json();
-    if (data.imageUrl) {
-      lastResultUrl = data.imageUrl;
-      document.getElementById('result-img').src = data.imageUrl;
-      const hints = { kabizlik:'Kabızlık odaklı reklam görseli hazır', hemoroit:'Hemoroit önleme odaklı görsel hazır', kolon:'Kolon sağlığı odaklı görsel hazır', genel:'Genel ürün reklam görseli hazır' };
-      document.getElementById('result-hint').innerHTML=`<strong>${hints[selProblem]}</strong> · Format: ${selFormat} · Meta Ads Manager'a yükleyebilirsin.`;
-      document.getElementById('result-area').classList.add('show');
-    } else {
-      alert('Hata: ' + (data.error||'Bilinmeyen hata'));
-    }
-  } catch(e) { alert('Bağlantı hatası: '+e.message); }
+    const raw = data.content?.[0]?.text || '';
 
-  document.getElementById('loading-state').classList.remove('show');
-  document.getElementById('gen-btn').disabled=false;
+    let plan;
+    try {
+      const clean = raw.replace(/```json|```/g,'').trim();
+      plan = JSON.parse(clean);
+    } catch(e) {
+      throw new Error('Plan ayrıştırılamadı');
+    }
+
+    // İçerik 1
+    document.getElementById('body-content1').innerHTML = formatWeekCard(`
+<strong>📌 Format:</strong> ${plan.content1.format}
+<strong>🪝 Hook:</strong> ${plan.content1.hook}
+<strong>🎬 Senaryo:</strong> ${plan.content1.senaryo}
+<strong>🎙️ Voiceover:</strong> ${plan.content1.voiceover}
+<strong>🎵 Müzik:</strong> ${plan.content1.muzik}
+<strong>📝 Caption:</strong> ${plan.content1.caption}`);
+
+    // İçerik 2
+    document.getElementById('body-content2').innerHTML = formatWeekCard(`
+<strong>📌 Format:</strong> ${plan.content2.format}
+<strong>🪝 Hook:</strong> ${plan.content2.hook}
+<strong>🎬 Senaryo:</strong> ${plan.content2.senaryo}
+<strong>🎙️ Voiceover:</strong> ${plan.content2.voiceover}
+<strong>🎵 Müzik:</strong> ${plan.content2.muzik}
+<strong>📝 Caption:</strong> ${plan.content2.caption}`);
+
+    // Reklam
+    document.getElementById('body-ad').innerHTML = formatWeekCard(`
+<strong>🖼️ Görsel:</strong> ${plan.ad.gorsel_onerisi}
+<strong>👥 Hedef Kitle:</strong> ${plan.ad.hedef_kitle}
+<strong>💰 Bütçe:</strong> ${plan.ad.butce} · ${plan.ad.sure}
+<strong>📝 Metin:</strong> ${plan.ad.primary_text}
+<strong>📌 Başlık:</strong> ${plan.ad.baslik}
+<strong>🔘 CTA:</strong> ${plan.ad.cta}`);
+
+    // Bonus
+    document.getElementById('body-bonus').innerHTML = formatWeekCard(`
+<strong>⚡ ${plan.bonus.taktik}</strong>
+${plan.bonus.aciklama}`);
+
+    document.getElementById('weekly-result').classList.add('show');
+  } catch(e) {
+    alert('Hata: ' + e.message);
+  }
+
+  document.getElementById('weekly-loading').classList.remove('show');
+  document.getElementById('weekly-gen-btn').disabled=false;
 }
 
-async function downloadResult() {
-  if (!lastResultUrl) return;
-  const res = await fetch(lastResultUrl);
-  const blob = await res.blob();
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'alatab-reklam-'+Date.now()+'.jpg';
-  a.click();
+function formatWeekCard(text) {
+  return text.trim().replace(/\n/g,'<br>');
+}
+
+function copyText(id) {
+  const el = document.getElementById(id);
+  const text = el.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = el.nextElementSibling;
+    btn.textContent = '✓ Kopyalandı';
+    setTimeout(()=>{ btn.textContent='Kopyala'; }, 2000);
+  });
 }
 
 function chipSend(el){document.getElementById('inp').value=el.textContent.trim();send();}
