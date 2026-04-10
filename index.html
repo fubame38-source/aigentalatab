@@ -256,43 +256,12 @@ HAFTALIK TEMPO: Haftada 2 içerik + 1 reklam yapıyor.`;
 
 const WEEKLY_SYSTEM = CTX + `
 
-Sen AlaTab için haftalık içerik ve reklam planı oluşturuyorsun.
-Kullanıcı haftada 2 içerik çekiyor, 1 reklam veriyor.
+Sen AlaTab icin haftalik icerik ve reklam plani olusturuyorsun. Haftada 2 icerik, 1 reklam.
 
-SADECE JSON formatında cevap ver, başka hiçbir şey yazma:
-{
-  "content1": {
-    "baslik": "İçerik 1 başlığı",
-    "format": "POV/Eğitim/Karşılaştırma vs",
-    "hook": "İlk 3 saniye hook cümlesi",
-    "senaryo": "Kısa çekim planı (3-4 adım)",
-    "voiceover": "ElevenLabs için sesli metin",
-    "muzik": "Müzik türü önerisi",
-    "caption": "Instagram caption metni"
-  },
-  "content2": {
-    "baslik": "İçerik 2 başlığı",
-    "format": "POV/Eğitim/Karşılaştırma vs",
-    "hook": "İlk 3 saniye hook cümlesi",
-    "senaryo": "Kısa çekim planı (3-4 adım)",
-    "voiceover": "ElevenLabs için sesli metin",
-    "muzik": "Müzik türü önerisi",
-    "caption": "Instagram caption metni"
-  },
-  "ad": {
-    "gorsel_onerisi": "Hangi görseli kullan",
-    "hedef_kitle": "Kime ver",
-    "butce": "Kaç TL harca",
-    "sure": "Kaç gün çalıştır",
-    "primary_text": "Reklam ana metni",
-    "baslik": "Reklam başlığı",
-    "cta": "CTA butonu"
-  },
-  "bonus": {
-    "taktik": "Bu hafta ekstra ne yap",
-    "aciklama": "Neden ve nasıl"
-  }
-}`;
+SADECE JSON don, baska hicbir sey yazma, markdown yok, kod blogу yok. Ilk karakter { son karakter } olmali:
+{"content1":{"baslik":"...","format":"...","hook":"...","senaryo":"...","voiceover":"...","muzik":"...","caption":"..."},"content2":{"baslik":"...","format":"...","hook":"...","senaryo":"...","voiceover":"...","muzik":"...","caption":"..."},"ad":{"gorsel_onerisi":"...","hedef_kitle":"...","butce":"...","sure":"...","primary_text":"...","baslik":"...","cta":"..."},"bonus":{"taktik":"...","aciklama":"..."}}
+
+Tum degerleri Turkce yaz, AlaTab urunune ozgun ol.`;
 
 const M = {
   content: { title:'İçerik & Hook Formülleri', sub:'Viral Reels, TikTok ve hook fikirleri', sys: CTX+'\n\nİÇERİK modülü: Viral Reels/TikTok fikirleri. Hook, çekim planı, ElevenLabs metni, müzik, neden viral olur. Türkçe.', chips:['🔥 Viral fikir üret','📱 POV discovery formatı','🎬 ElevenLabs voiceover','🪝 5 farklı hook','😱 Şok/merak formatı','👨‍👩‍👧 Sosyal kanıt formatı'] },
