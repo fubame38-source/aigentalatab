@@ -7,258 +7,125 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
 :root {
-  --white: #ffffff;
-  --gray-50: #f5f5f7;
-  --gray-100: #e8e8ed;
-  --gray-200: #d2d2d7;
-  --gray-400: #86868b;
-  --gray-600: #515154;
-  --gray-900: #1d1d1f;
-  --blue: #0071e3;
-  --blue-hover: #0077ed;
-  --green: #34c759;
-  --purple: #5e5ce6;
+  --white: #ffffff; --gray-50: #f5f5f7; --gray-100: #e8e8ed; --gray-200: #d2d2d7;
+  --gray-400: #86868b; --gray-600: #515154; --gray-900: #1d1d1f;
+  --blue: #0071e3; --blue-hover: #0077ed; --green: #34c759; --purple: #5e5ce6;
 }
-body {
-  font-family: -apple-system, "SF Pro Text", BlinkMacSystemFont, sans-serif;
-  background: var(--white);
-  color: var(--gray-900);
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-nav {
-  height: 48px;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 0.5px solid var(--gray-200);
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 22px; flex-shrink: 0; z-index: 100;
-}
-.nav-brand {
-  font-size: 14px; font-weight: 600; color: var(--gray-900);
-  letter-spacing: -0.2px; display: flex; align-items: center; gap: 7px;
-}
-.nav-brand-icon {
-  width: 22px; height: 22px; background: var(--gray-900);
-  border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 11px;
-}
+body { font-family: -apple-system, "SF Pro Text", BlinkMacSystemFont, sans-serif; background: var(--white); color: var(--gray-900); height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+nav { height: 48px; background: rgba(255,255,255,0.92); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 0.5px solid var(--gray-200); display: flex; align-items: center; justify-content: space-between; padding: 0 22px; flex-shrink: 0; z-index: 100; }
+.nav-brand { font-size: 14px; font-weight: 600; color: var(--gray-900); letter-spacing: -0.2px; display: flex; align-items: center; gap: 7px; }
+.nav-brand-icon { width: 22px; height: 22px; background: var(--gray-900); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 11px; }
 .nav-live { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--gray-400); }
 .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: blink 2s infinite; }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
 .app { flex: 1; display: flex; overflow: hidden; }
-.sidebar {
-  width: 220px; min-width: 220px;
-  border-right: 0.5px solid var(--gray-200);
-  padding: 16px 10px; display: flex; flex-direction: column; gap: 1px;
-  background: var(--white); overflow-y: auto;
-}
-.sidebar-label {
-  font-size: 11px; font-weight: 600; color: var(--gray-400);
-  letter-spacing: 0.04em; padding: 10px 8px 5px;
-}
+.sidebar { width: 220px; min-width: 220px; border-right: 0.5px solid var(--gray-200); padding: 16px 10px; display: flex; flex-direction: column; gap: 1px; background: var(--white); overflow-y: auto; }
+.sidebar-label { font-size: 11px; font-weight: 600; color: var(--gray-400); letter-spacing: 0.04em; padding: 10px 8px 5px; }
 .sidebar-label:first-child { padding-top: 2px; }
-.nav-btn {
-  width: 100%; display: flex; align-items: center; gap: 9px;
-  padding: 7px 8px; border-radius: 8px; border: none; background: transparent;
-  color: var(--gray-600); font-family: inherit; font-size: 13px;
-  cursor: pointer; transition: background 0.1s, color 0.1s; text-align: left;
-}
+.nav-btn { width: 100%; display: flex; align-items: center; gap: 9px; padding: 7px 8px; border-radius: 8px; border: none; background: transparent; color: var(--gray-600); font-family: inherit; font-size: 13px; cursor: pointer; transition: background 0.1s, color 0.1s; text-align: left; }
 .nav-btn:hover { background: var(--gray-50); color: var(--gray-900); }
 .nav-btn.active { background: var(--gray-50); color: var(--gray-900); font-weight: 500; }
-.nav-btn-icon {
-  width: 26px; height: 26px; border-radius: 6px; background: var(--gray-100);
-  display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0;
-}
+.nav-btn-icon { width: 26px; height: 26px; border-radius: 6px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
 .nav-btn.active .nav-btn-icon { background: var(--gray-900); }
-.nav-btn.image-mode.active .nav-btn-icon { background: var(--purple); }
+.nav-btn.img-btn.active .nav-btn-icon { background: var(--purple); }
 .tags-wrap { padding: 5px 8px; display: flex; flex-wrap: wrap; gap: 4px; }
 .tag { font-size: 11px; color: var(--gray-600); background: var(--gray-50); border: 0.5px solid var(--gray-200); border-radius: 5px; padding: 2px 7px; }
 .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
-.main-header {
-  padding: 13px 28px; border-bottom: 0.5px solid var(--gray-100);
-  display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
-}
+.main-header { padding: 13px 28px; border-bottom: 0.5px solid var(--gray-100); display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
 .main-header-title { font-size: 14px; font-weight: 600; color: var(--gray-900); letter-spacing: -0.1px; }
 .main-header-sub { font-size: 12px; color: var(--gray-400); margin-top: 1px; }
 .model-tag { font-size: 11px; color: var(--gray-400); background: var(--gray-50); border: 0.5px solid var(--gray-200); border-radius: 20px; padding: 3px 10px; }
-.messages {
-  flex: 1; overflow-y: auto; padding: 28px;
-  display: flex; flex-direction: column; gap: 20px;
-  scrollbar-width: thin; scrollbar-color: var(--gray-200) transparent;
-}
-.empty-state {
-  flex: 1; display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 10px; text-align: center; padding: 40px;
-}
-.empty-icon {
-  width: 48px; height: 48px; border-radius: 14px;
-  background: var(--gray-50); border: 0.5px solid var(--gray-200);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px; margin-bottom: 6px;
-}
+.messages { flex: 1; overflow-y: auto; padding: 28px; display: flex; flex-direction: column; gap: 20px; scrollbar-width: thin; scrollbar-color: var(--gray-200) transparent; }
+.empty-state { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; padding: 40px; }
+.empty-icon { width: 48px; height: 48px; border-radius: 14px; background: var(--gray-50); border: 0.5px solid var(--gray-200); display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 6px; }
 .empty-title { font-size: 16px; font-weight: 600; color: var(--gray-900); }
 .empty-desc { font-size: 13px; line-height: 1.6; color: var(--gray-400); max-width: 280px; }
 .msg { display: flex; gap: 10px; animation: in 0.18s ease; }
 @keyframes in { from{opacity:0;transform:translateY(3px)} to{opacity:1;transform:translateY(0)} }
 .msg.user { flex-direction: row-reverse; }
-.avatar {
-  width: 26px; height: 26px; border-radius: 7px;
-  flex-shrink: 0; margin-top: 2px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 10px; font-weight: 600;
-}
+.avatar { width: 26px; height: 26px; border-radius: 7px; flex-shrink: 0; margin-top: 2px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; }
 .msg.ai .avatar { background: var(--gray-900); color: var(--white); }
 .msg.user .avatar { background: var(--gray-100); color: var(--gray-600); font-size: 13px; }
 .bubble { max-width: 66%; padding: 10px 14px; border-radius: 14px; font-size: 14px; line-height: 1.65; white-space: pre-wrap; }
 .msg.ai .bubble { background: var(--gray-50); color: var(--gray-900); border-top-left-radius: 4px; }
 .msg.user .bubble { background: var(--blue); color: #fff; border-top-right-radius: 4px; }
 .bubble strong { font-weight: 600; }
-.bubble em { font-style: italic; color: var(--gray-600); }
 .dots { display: flex; gap: 3px; align-items: center; padding: 2px 0; }
 .dots span { width: 4px; height: 4px; border-radius: 50%; background: var(--gray-400); animation: dot 1.2s infinite; }
 .dots span:nth-child(2) { animation-delay: 0.15s; }
 .dots span:nth-child(3) { animation-delay: 0.3s; }
 @keyframes dot { 0%,80%,100%{transform:scale(1);opacity:0.4} 40%{transform:scale(1.3);opacity:1} }
 
-/* IMAGE MODE */
-.image-panel {
-  flex: 1; overflow-y: auto; padding: 28px;
-  display: flex; flex-direction: column; gap: 20px;
-  scrollbar-width: thin; scrollbar-color: var(--gray-200) transparent;
-}
-.image-welcome {
-  display: flex; flex-direction: column; align-items: center;
-  justify-content: center; gap: 10px; text-align: center; padding: 40px; flex: 1;
-}
-.format-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-bottom: 4px;
-}
-.format-card {
-  background: var(--gray-50);
-  border: 0.5px solid var(--gray-200);
-  border-radius: 10px;
-  padding: 14px 12px;
-  cursor: pointer;
-  transition: all 0.12s;
-  text-align: center;
-}
-.format-card:hover { border-color: var(--purple); background: #f5f4ff; }
-.format-card.selected { border-color: var(--purple); background: #f0effe; }
-.format-name { font-size: 12px; font-weight: 600; color: var(--gray-900); margin-top: 6px; }
-.format-size { font-size: 11px; color: var(--gray-400); margin-top: 2px; }
-.format-icon { font-size: 20px; }
+/* IMAGE PANEL */
+.image-panel { flex: 1; overflow-y: auto; padding: 24px 28px; display: flex; flex-direction: column; gap: 16px; scrollbar-width: thin; }
+.sec-title { font-size: 11px; font-weight: 600; color: var(--gray-400); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 6px; }
 
-.theme-grid {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;
+/* Upload zone */
+.upload-zone {
+  border: 1.5px dashed var(--gray-200); border-radius: 12px;
+  padding: 28px 20px; text-align: center; cursor: pointer;
+  transition: all 0.15s; background: var(--gray-50);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
 }
-.theme-card {
+.upload-zone:hover { border-color: var(--purple); background: #f5f4ff; }
+.upload-zone.has-image { border-style: solid; border-color: var(--purple); padding: 10px; background: var(--white); }
+.upload-icon { font-size: 28px; }
+.upload-text { font-size: 13px; color: var(--gray-600); font-weight: 500; }
+.upload-sub { font-size: 11px; color: var(--gray-400); }
+.preview-img { width: 100%; max-height: 200px; object-fit: contain; border-radius: 8px; display: none; }
+.preview-img.show { display: block; }
+.change-btn { font-size: 11px; color: var(--purple); cursor: pointer; margin-top: 4px; }
+
+/* Problem grid */
+.problem-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.problem-card {
   padding: 10px 12px; border-radius: 8px;
-  border: 0.5px solid var(--gray-200);
-  background: var(--gray-50);
+  border: 0.5px solid var(--gray-200); background: var(--gray-50);
   cursor: pointer; transition: all 0.12s;
   font-size: 13px; color: var(--gray-600);
   display: flex; align-items: center; gap: 8px;
 }
-.theme-card:hover { border-color: var(--purple); color: var(--gray-900); background: #f5f4ff; }
-.theme-card.selected { border-color: var(--purple); background: #f0effe; color: var(--gray-900); font-weight: 500; }
+.problem-card:hover { border-color: var(--purple); background: #f5f4ff; color: var(--gray-900); }
+.problem-card.selected { border-color: var(--purple); background: #f0effe; color: var(--gray-900); font-weight: 500; }
 
-.section-title {
-  font-size: 11px; font-weight: 600; color: var(--gray-400);
-  letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 8px;
-}
+/* Format */
+.format-row { display: flex; gap: 8px; }
+.format-btn { flex: 1; padding: 8px; border-radius: 8px; border: 0.5px solid var(--gray-200); background: var(--gray-50); cursor: pointer; font-family: inherit; font-size: 12px; color: var(--gray-600); text-align: center; transition: all 0.12s; }
+.format-btn:hover { border-color: var(--purple); background: #f5f4ff; }
+.format-btn.selected { border-color: var(--purple); background: #f0effe; color: var(--gray-900); font-weight: 500; }
+.format-btn div:first-child { font-size: 16px; margin-bottom: 3px; }
 
-.gen-btn {
-  width: 100%; padding: 11px;
-  background: var(--purple); color: #fff;
-  border: none; border-radius: 10px;
-  font-family: inherit; font-size: 14px; font-weight: 500;
-  cursor: pointer; transition: opacity 0.15s, transform 0.1s;
-  margin-top: 4px;
-}
+.gen-btn { width: 100%; padding: 12px; background: var(--purple); color: #fff; border: none; border-radius: 10px; font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer; transition: opacity 0.15s, transform 0.1s; }
 .gen-btn:hover { opacity: 0.9; }
 .gen-btn:active { transform: scale(0.98); }
 .gen-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
-.img-result {
-  display: none;
-  flex-direction: column;
-  gap: 16px;
-}
-.img-result.show { display: flex; }
-.generated-img {
-  width: 100%; border-radius: 12px;
-  border: 0.5px solid var(--gray-200);
-  display: block;
-}
-.img-actions { display: flex; gap: 8px; }
-.img-action-btn {
-  flex: 1; padding: 9px;
-  background: var(--gray-50); color: var(--gray-900);
-  border: 0.5px solid var(--gray-200); border-radius: 8px;
-  font-family: inherit; font-size: 13px; cursor: pointer;
-  transition: background 0.1s;
-}
-.img-action-btn:hover { background: var(--gray-100); }
-.img-action-btn.primary { background: var(--purple); color: #fff; border-color: var(--purple); }
-.img-action-btn.primary:hover { opacity: 0.9; }
-
-.copy-hint {
-  font-size: 12px; color: var(--gray-400);
-  background: var(--gray-50); border: 0.5px solid var(--gray-100);
-  border-radius: 8px; padding: 10px 12px; line-height: 1.6;
-}
-
-.loading-img {
-  width: 100%; aspect-ratio: 1;
-  background: var(--gray-50); border-radius: 12px;
-  border: 0.5px solid var(--gray-200);
-  display: none; align-items: center; justify-content: center;
-  flex-direction: column; gap: 10px; color: var(--gray-400); font-size: 13px;
-}
-.loading-img.show { display: flex; }
-.spinner {
-  width: 24px; height: 24px; border-radius: 50%;
-  border: 2px solid var(--gray-200);
-  border-top-color: var(--purple);
-  animation: spin 0.8s linear infinite;
-}
+.loading-state { display: none; flex-direction: column; align-items: center; gap: 10px; padding: 28px; background: var(--gray-50); border-radius: 12px; }
+.loading-state.show { display: flex; }
+.spinner { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--gray-200); border-top-color: var(--purple); animation: spin 0.8s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
+.loading-text { font-size: 13px; color: var(--gray-400); }
+
+.result-area { display: none; flex-direction: column; gap: 12px; }
+.result-area.show { display: flex; }
+.result-img { width: 100%; border-radius: 12px; border: 0.5px solid var(--gray-200); display: block; }
+.result-hint { font-size: 12px; color: var(--gray-400); background: var(--gray-50); border-radius: 8px; padding: 10px 12px; line-height: 1.6; }
+.result-actions { display: flex; gap: 8px; }
+.action-btn { flex: 1; padding: 9px; border-radius: 8px; font-family: inherit; font-size: 13px; cursor: pointer; transition: all 0.1s; border: 0.5px solid var(--gray-200); background: var(--gray-50); color: var(--gray-900); }
+.action-btn:hover { background: var(--gray-100); }
+.action-btn.primary { background: var(--purple); color: #fff; border-color: var(--purple); }
+.action-btn.primary:hover { opacity: 0.9; }
 
 /* INPUT */
 .input-area { padding: 12px 28px 18px; border-top: 0.5px solid var(--gray-100); background: var(--white); flex-shrink: 0; }
 .chips { display: flex; gap: 5px; margin-bottom: 9px; flex-wrap: wrap; }
-.chip {
-  font-size: 12px; color: var(--gray-600); background: var(--white);
-  border: 0.5px solid var(--gray-200); border-radius: 20px; padding: 4px 11px;
-  cursor: pointer; font-family: inherit; transition: all 0.1s; white-space: nowrap;
-}
+.chip { font-size: 12px; color: var(--gray-600); background: var(--white); border: 0.5px solid var(--gray-200); border-radius: 20px; padding: 4px 11px; cursor: pointer; font-family: inherit; transition: all 0.1s; white-space: nowrap; }
 .chip:hover { background: var(--gray-50); border-color: var(--gray-400); color: var(--gray-900); }
-.input-box {
-  display: flex; align-items: flex-end; gap: 8px;
-  background: var(--gray-50); border: 0.5px solid var(--gray-200);
-  border-radius: 12px; padding: 4px 4px 4px 14px;
-  transition: border-color 0.15s, box-shadow 0.15s;
-}
+.input-box { display: flex; align-items: flex-end; gap: 8px; background: var(--gray-50); border: 0.5px solid var(--gray-200); border-radius: 12px; padding: 4px 4px 4px 14px; transition: border-color 0.15s, box-shadow 0.15s; }
 .input-box:focus-within { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(0,113,227,0.1); }
-textarea {
-  flex: 1; background: none; border: none; outline: none;
-  font-family: inherit; font-size: 14px; color: var(--gray-900);
-  line-height: 1.5; resize: none; min-height: 34px; max-height: 120px; padding: 6px 0;
-}
+textarea { flex: 1; background: none; border: none; outline: none; font-family: inherit; font-size: 14px; color: var(--gray-900); line-height: 1.5; resize: none; min-height: 34px; max-height: 120px; padding: 6px 0; }
 textarea::placeholder { color: var(--gray-400); }
-.send {
-  width: 32px; height: 32px; border-radius: 8px;
-  background: var(--blue); border: none; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  color: #fff; transition: background 0.1s, transform 0.1s, opacity 0.15s; flex-shrink: 0;
-}
+.send { width: 32px; height: 32px; border-radius: 8px; background: var(--blue); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.1s, transform 0.1s, opacity 0.15s; flex-shrink: 0; }
 .send:hover { background: var(--blue-hover); }
 .send:active { transform: scale(0.94); }
 .send:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
@@ -269,62 +136,31 @@ textarea::placeholder { color: var(--gray-400); }
   .messages, .image-panel { padding: 18px 16px; }
   .input-area { padding: 10px 16px 16px; }
   .bubble { max-width: 88%; }
-  .format-grid { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
 </head>
 <body>
-
 <nav>
-  <div class="nav-brand">
-    <div class="nav-brand-icon">🪵</div>
-    AlaTab AI
-  </div>
-  <div class="nav-live">
-    <div class="live-dot"></div>
-    Aktif
-  </div>
+  <div class="nav-brand"><div class="nav-brand-icon">🪵</div>AlaTab AI</div>
+  <div class="nav-live"><div class="live-dot"></div>Aktif</div>
 </nav>
-
 <div class="app">
   <aside class="sidebar">
     <div class="sidebar-label">İçerik</div>
-    <button class="nav-btn active" onclick="setMode('content')" id="btn-content">
-      <div class="nav-btn-icon">📸</div>İçerik & Hook
-    </button>
-
+    <button class="nav-btn active" onclick="setMode('content')" id="btn-content"><div class="nav-btn-icon">📸</div>İçerik & Hook</button>
     <div class="sidebar-label">Reklam</div>
-    <button class="nav-btn image-mode" onclick="setMode('image')" id="btn-image">
-      <div class="nav-btn-icon">🎨</div>Reklam Görseli
-    </button>
-    <button class="nav-btn" onclick="setMode('ads')" id="btn-ads">
-      <div class="nav-btn-icon">🎯</div>Meta Reklam Metni
-    </button>
-    <button class="nav-btn" onclick="setMode('shopify')" id="btn-shopify">
-      <div class="nav-btn-icon">🛍️</div>Shopify Sayfası
-    </button>
-
+    <button class="nav-btn img-btn" onclick="setMode('image')" id="btn-image"><div class="nav-btn-icon">🎨</div>Reklam Görseli</button>
+    <button class="nav-btn" onclick="setMode('ads')" id="btn-ads"><div class="nav-btn-icon">🎯</div>Meta Reklam Metni</button>
+    <button class="nav-btn" onclick="setMode('shopify')" id="btn-shopify"><div class="nav-btn-icon">🛍️</div>Shopify Sayfası</button>
     <div class="sidebar-label">Büyüme</div>
-    <button class="nav-btn" onclick="setMode('seo')" id="btn-seo">
-      <div class="nav-btn-icon">🔍</div>SEO & Google
-    </button>
-    <button class="nav-btn" onclick="setMode('competitor')" id="btn-competitor">
-      <div class="nav-btn-icon">🧭</div>Rakip Analizi
-    </button>
-    <button class="nav-btn" onclick="setMode('product')" id="btn-product">
-      <div class="nav-btn-icon">💡</div>Yeni Ürün
-    </button>
-    <button class="nav-btn" onclick="setMode('biz')" id="btn-biz">
-      <div class="nav-btn-icon">📈</div>İş Geliştirme
-    </button>
-
+    <button class="nav-btn" onclick="setMode('seo')" id="btn-seo"><div class="nav-btn-icon">🔍</div>SEO & Google</button>
+    <button class="nav-btn" onclick="setMode('competitor')" id="btn-competitor"><div class="nav-btn-icon">🧭</div>Rakip Analizi</button>
+    <button class="nav-btn" onclick="setMode('product')" id="btn-product"><div class="nav-btn-icon">💡</div>Yeni Ürün</button>
+    <button class="nav-btn" onclick="setMode('biz')" id="btn-biz"><div class="nav-btn-icon">📈</div>İş Geliştirme</button>
     <div class="sidebar-label">Marka</div>
     <div class="tags-wrap">
-      <span class="tag">Patentli taburet</span>
-      <span class="tag">1M+ TL</span>
-      <span class="tag">Instagram</span>
-      <span class="tag">Meta Ads</span>
-      <span class="tag">Shopify</span>
+      <span class="tag">Patentli taburet</span><span class="tag">1M+ TL</span>
+      <span class="tag">Instagram</span><span class="tag">Meta Ads</span><span class="tag">Shopify</span>
     </div>
   </aside>
 
@@ -337,7 +173,7 @@ textarea::placeholder { color: var(--gray-400); }
       <div class="model-tag" id="model-tag">Claude Sonnet</div>
     </div>
 
-    <!-- CHAT PANEL -->
+    <!-- CHAT -->
     <div class="messages" id="messages">
       <div class="empty-state" id="empty">
         <div class="empty-icon">🪵</div>
@@ -348,66 +184,50 @@ textarea::placeholder { color: var(--gray-400); }
 
     <!-- IMAGE PANEL -->
     <div class="image-panel" id="image-panel" style="display:none;">
-      <div class="section-title">Format Seç</div>
-      <div class="format-grid">
-        <div class="format-card selected" onclick="selectFormat(this,'1:1','1080x1080')" data-ratio="1:1" data-size="1080x1080">
-          <div class="format-icon">⬜</div>
-          <div class="format-name">Kare</div>
-          <div class="format-size">1080×1080</div>
+      <div>
+        <div class="sec-title">Ürün Görselini Yükle</div>
+        <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()">
+          <div class="upload-icon">📷</div>
+          <div class="upload-text">AlaTab görselini buraya sürükle veya tıkla</div>
+          <div class="upload-sub">JPG, PNG — reklama dönüştürülecek</div>
+          <img class="preview-img" id="preview-img" src="" alt="">
+          <div class="change-btn" id="change-btn" style="display:none">Görseli değiştir</div>
         </div>
-        <div class="format-card" onclick="selectFormat(this,'4:5','1080x1350')" data-ratio="4:5" data-size="1080x1350">
-          <div class="format-icon">🟦</div>
-          <div class="format-name">Feed</div>
-          <div class="format-size">1080×1350</div>
-        </div>
-        <div class="format-card" onclick="selectFormat(this,'9:16','1080x1920')" data-ratio="9:16" data-size="1080x1920">
-          <div class="format-icon">📱</div>
-          <div class="format-name">Story/Reels</div>
-          <div class="format-size">1080×1920</div>
+        <input type="file" id="file-input" accept="image/*" style="display:none" onchange="handleFile(event)">
+      </div>
+
+      <div>
+        <div class="sec-title">Problem / Mesaj Seç</div>
+        <div class="problem-grid">
+          <div class="problem-card selected" onclick="selectProblem(this,'kabizlik')" data-p="kabizlik">💩 Kabızlık Çözümü</div>
+          <div class="problem-card" onclick="selectProblem(this,'hemoroit')" data-p="hemoroit">🩺 Hemoroit Önleme</div>
+          <div class="problem-card" onclick="selectProblem(this,'kolon')" data-p="kolon">💚 Kolon Sağlığı</div>
+          <div class="problem-card" onclick="selectProblem(this,'genel')" data-p="genel">🪵 Genel Ürün Reklamı</div>
         </div>
       </div>
 
-      <div class="section-title" style="margin-top:8px;">Tema Seç</div>
-      <div class="theme-grid">
-        <div class="theme-card selected" onclick="selectTheme(this)" data-theme="minimalist">
-          ✨ Minimalist & Temiz
-        </div>
-        <div class="theme-card" onclick="selectTheme(this)" data-theme="lifestyle">
-          🏠 Yaşam Tarzı
-        </div>
-        <div class="theme-card" onclick="selectTheme(this)" data-theme="health">
-          💚 Sağlık & Doğa
-        </div>
-        <div class="theme-card" onclick="selectTheme(this)" data-theme="luxury">
-          🪵 Ahşap & Premium
-        </div>
-        <div class="theme-card" onclick="selectTheme(this)" data-theme="problem">
-          🎯 Problem-Çözüm
-        </div>
-        <div class="theme-card" onclick="selectTheme(this)" data-theme="turkish">
-          🇹🇷 Türk Ev / Aile
+      <div>
+        <div class="sec-title">Format</div>
+        <div class="format-row">
+          <button class="format-btn selected" onclick="selectFormat(this,'1:1')" data-f="1:1"><div>⬜</div><div>Kare</div><div style="font-size:10px;color:var(--gray-400)">1080×1080</div></button>
+          <button class="format-btn" onclick="selectFormat(this,'4:5')" data-f="4:5"><div>🟦</div><div>Feed</div><div style="font-size:10px;color:var(--gray-400)">1080×1350</div></button>
+          <button class="format-btn" onclick="selectFormat(this,'9:16')" data-f="9:16"><div>📱</div><div>Story</div><div style="font-size:10px;color:var(--gray-400)">1080×1920</div></button>
         </div>
       </div>
 
-      <div style="margin-top:8px;">
-        <div class="section-title">Ekstra Not (opsiyonel)</div>
-        <input type="text" id="extra-note" placeholder="örn: beyaz arka plan, modern mutfak..."
-          style="width:100%;padding:9px 12px;border:0.5px solid var(--gray-200);border-radius:8px;font-family:inherit;font-size:13px;color:var(--gray-900);background:var(--gray-50);outline:none;">
-      </div>
+      <button class="gen-btn" id="gen-btn" onclick="generateImage()">✦ Reklam Görseli Üret</button>
 
-      <button class="gen-btn" id="gen-btn" onclick="generateImage()">✦ Görsel Üret</button>
-
-      <div class="loading-img" id="loading-img">
+      <div class="loading-state" id="loading-state">
         <div class="spinner"></div>
-        Görsel üretiliyor...
+        <div class="loading-text">Görsel üretiliyor, 20-30 saniye sürebilir...</div>
       </div>
 
-      <div class="img-result" id="img-result">
-        <img id="generated-img" class="generated-img" src="" alt="Üretilen görsel">
-        <div class="copy-hint" id="copy-hint"></div>
-        <div class="img-actions">
-          <button class="img-action-btn" onclick="generateImage()">🔄 Yeniden Üret</button>
-          <button class="img-action-btn primary" onclick="downloadImg()">⬇ İndir</button>
+      <div class="result-area" id="result-area">
+        <img class="result-img" id="result-img" src="" alt="Üretilen reklam görseli">
+        <div class="result-hint" id="result-hint"></div>
+        <div class="result-actions">
+          <button class="action-btn" onclick="generateImage()">🔄 Yeniden Üret</button>
+          <button class="action-btn primary" onclick="downloadResult()">⬇ İndir</button>
         </div>
       </div>
     </div>
@@ -421,12 +241,9 @@ textarea::placeholder { color: var(--gray-400); }
         <button class="chip" onclick="chipSend(this)">🪝 5 hook seçeneği</button>
       </div>
       <div class="input-box">
-        <textarea id="inp" placeholder="Ne üretelim?" rows="1"
-          onkeydown="handleKey(event)" oninput="resize(this)"></textarea>
+        <textarea id="inp" placeholder="Ne üretelim?" rows="1" onkeydown="handleKey(event)" oninput="resize(this)"></textarea>
         <button class="send" id="send-btn" onclick="send()">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M7 11V3M7 3L3 7M7 3L11 7" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 11V3M7 3L3 7M7 3L11 7" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
     </div>
@@ -440,207 +257,143 @@ const CTX = `Sen AlaTab markasının özel AI asistanısın. AlaTab hakkında he
 MARKA: Türkiye'nin patentli ahşap tuvalet taburesi. Squatty Potty'nin Türk versiyonu. alatab.com.tr
 FİNANS: 1M+ TL ciro. Ürün fiyatı 1.799 TL. Meta Ads CPA ~275-355 TL.
 PLATFORM: Shopify (Savor teması). Instagram organik + Meta Ads ile büyüme.
-VİRAL FORMAT: "Sosyal keşif" POV — örn: "Kayınvalidenin banyosuna girdim bir de ne göreyim". Ürün adı sesli söylenmiyor. El kamerası doğal his. Hard cut. Sessiz açılış <3sn. Trend müzik. Altyazı zorunlu. ElevenLabs voiceover. Yüz/kişisel ses kullanılmıyor.
-HEDEF KİTLE: 25-50 yaş Türkler. Sağlık ve doğallık ilgisi. Özellikle anneler ve ev hanımları.
-ÜRÜN FAYDALARI: Çömelme pozisyonu, hemoroit önleme, kabızlık giderme, kolon sağlığı.
-SEO DURUMU: Google Business Profile yok. Meta description zayıf. Schema markup yok. Skor 42/100.
-REKABET: Squatty Potty Türkiye'de yok. Türk rakipler plastik/ucuz ürünler satıyor.`;
+VİRAL FORMAT: "Sosyal keşif" POV. Ürün adı sesli söylenmiyor. El kamerası. Hard cut. Sessiz açılış <3sn. Trend müzik. Altyazı. ElevenLabs voiceover.
+HEDEF KİTLE: 25-50 yaş Türkler. Sağlık ve doğallık ilgisi.
+ÜRÜN FAYDALARI: Çömelme pozisyonu, hemoroit önleme, kabızlık giderme, kolon sağlığı.`;
 
 const M = {
-  content: {
-    title:'İçerik & Hook Formülleri', sub:'Viral Reels, TikTok ve hook fikirleri',
-    sys: CTX+'\n\nİÇERİK & HOOK modülü: AlaTab için viral Reels/TikTok fikirleri. Hook cümlesi, çekim planı, ElevenLabs metni, müzik, neden viral olur. Türkçe.',
-    chips:['🔥 Viral fikir üret','📱 POV discovery formatı','🎬 ElevenLabs voiceover metni','🪝 5 farklı hook','😱 Şok/merak formatı','👨‍👩‍👧 Sosyal kanıt formatı']
-  },
-  ads: {
-    title:'Meta Reklam Metni', sub:'Facebook/Instagram reklam metni ve strateji',
-    sys: CTX+'\n\nMETA REKLAM modülü: Yüksek dönüşümlü reklam metinleri. Primary text (kısa/orta/uzun), başlık, CTA, hedef kitle segmentleri. CBO yapısı, CPA benchmarkı 275-355 TL. Türkçe.',
-    chips:['✍️ 3 versiyon reklam metni','🎯 Hedef kitle segmentleri','📊 CBO kampanya yapısı','🔄 Organik → Ücretli','💰 Bütçe optimizasyonu','📱 Reel reklam scripti']
-  },
-  shopify: {
-    title:'Shopify Ürün Sayfası', sub:'Dönüşüm artırma ve sayfa optimizasyonu',
-    sys: CTX+'\n\nSHOPIFY modülü: Ürün sayfası optimizasyonu. Bilinen sorunlar: review tutarsızlığı, AI-generated testimonialler, kırık linkler, sticky ATC yok, bundle yok. Ürün açıklaması, FAQ, sosyal kanıt stratejisi, upsell fikirleri. Türkçe.',
-    chips:['📝 Ürün açıklaması yaz','⭐ Review stratejisi','📦 Bundle/upsell fikirleri','🛒 Sticky ATC önerisi','❓ FAQ bölümü yaz','📸 Görsel sıralaması']
-  },
-  seo: {
-    title:'SEO & Google Görünürlüğü', sub:'Organik trafik ve Google sıralaması',
-    sys: CTX+'\n\nSEO modülü: alatab.com.tr SEO stratejisi (skor 42/100). Hedef keywordler: klozet taburesi, tuvalet taburesi, kabızlık çözümü, Squatty Potty Türkiye. Meta title/description, schema markup, blog içerikleri, Google Business. Türkçe.',
-    chips:['🔑 Keyword araştırması','📝 Meta title/description yaz','📖 Blog yazısı fikri','🏪 Google Business önerileri','🏗️ Schema markup kodu','📊 İçerik takvimi']
-  },
-  competitor: {
-    title:'Rakip & Pazar Analizi', sub:'Türkiye pazarı ve rekabet stratejisi',
-    sys: CTX+'\n\nRAKİP ANALİZİ modülü: Türkiye tuvalet taburesi pazarı. Fiyat konumlandırması, B2B fırsatları (oteller, hastaneler), ihracat potansiyeli, yeni segmentler. Türkçe.',
-    chips:['🏆 Rakip karşılaştırması','📈 Pazar fırsat analizi','💎 Farklılaştırma stratejisi','🏢 B2B fırsatları','💰 Fiyat konumlandırması','🌍 İhracat fırsatları']
-  },
-  product: {
-    title:'Yeni Ürün Fikirleri', sub:'Ürün genişletme ve yeni konseptler',
-    sys: CTX+'\n\nYENİ ÜRÜN modülü: AlaTab markası altında yeni ürünler. Tuvalet öncesi koku spreyi, manifestasyon kartları, ahşap dekoratif ürünler. Her ürün için: konsept, hedef kitle, fiyat, üretim kolaylığı, viral potansiyel. Türkçe.',
-    chips:['🆕 5 yeni ürün fikri','🧴 Koku spreyi konsepti','🎴 Manifestasyon kartı','🪵 Ahşap ürün fikirleri','📦 Bundle paket önerileri','🚀 En hızlı lansman hangisi']
-  },
-  biz: {
-    title:'İş Geliştirme', sub:'Büyüme stratejisi ve genel iş tavsiyeleri',
-    sys: CTX+'\n\nİŞ GELİŞTİRME modülü: AlaTab büyüme stratejisi. Haftalık öncelikler, yeni satış kanalları (Trendyol, Hepsiburada), influencer/UGC stratejisi, 1M→3M TL ciro roadmap. Türkçe.',
-    chips:['🚀 Bu hafta 3 öncelik','📅 Aylık büyüme planı','🛒 Yeni satış kanalları','🤝 Influencer stratejisi','📊 3M TL ciro roadmap','⚡ Hızlı kazanımlar']
-  }
+  content: { title:'İçerik & Hook Formülleri', sub:'Viral Reels, TikTok ve hook fikirleri', sys: CTX+'\n\nİÇERİK modülü: Viral Reels/TikTok fikirleri. Hook, çekim planı, ElevenLabs metni, müzik, neden viral olur. Türkçe.', chips:['🔥 Viral fikir üret','📱 POV discovery formatı','🎬 ElevenLabs voiceover','🪝 5 farklı hook','😱 Şok/merak formatı','👨‍👩‍👧 Sosyal kanıt formatı'] },
+  ads: { title:'Meta Reklam Metni', sub:'Facebook/Instagram reklam metni ve strateji', sys: CTX+'\n\nMETA REKLAM modülü: Yüksek dönüşümlü reklam metinleri. Primary text (kısa/orta/uzun), başlık, CTA, hedef kitle. CBO yapısı. Türkçe.', chips:['✍️ 3 versiyon reklam metni','🎯 Hedef kitle segmentleri','📊 CBO kampanya yapısı','🔄 Organik → Ücretli','💰 Bütçe optimizasyonu','📱 Reel reklam scripti'] },
+  shopify: { title:'Shopify Ürün Sayfası', sub:'Dönüşüm artırma ve sayfa optimizasyonu', sys: CTX+'\n\nSHOPIFY modülü: Ürün sayfası optimizasyonu. Review stratejisi, bundle, sticky ATC, FAQ. Türkçe.', chips:['📝 Ürün açıklaması yaz','⭐ Review stratejisi','📦 Bundle/upsell fikirleri','🛒 Sticky ATC önerisi','❓ FAQ bölümü','📸 Görsel sıralaması'] },
+  seo: { title:'SEO & Google Görünürlüğü', sub:'Organik trafik ve Google sıralaması', sys: CTX+'\n\nSEO modülü: alatab.com.tr (skor 42/100). Keywordler, meta tags, schema, blog, Google Business. Türkçe.', chips:['🔑 Keyword araştırması','📝 Meta title/description','📖 Blog yazısı fikri','🏪 Google Business','🏗️ Schema markup kodu','📊 İçerik takvimi'] },
+  competitor: { title:'Rakip & Pazar Analizi', sub:'Türkiye pazarı ve rekabet stratejisi', sys: CTX+'\n\nRAKİP modülü: Türkiye tuvalet taburesi pazarı. Fiyat, B2B, ihracat, segmentler. Türkçe.', chips:['🏆 Rakip karşılaştırması','📈 Pazar fırsat analizi','💎 Farklılaştırma','🏢 B2B fırsatları','💰 Fiyat konumlandırması','🌍 İhracat fırsatları'] },
+  product: { title:'Yeni Ürün Fikirleri', sub:'Ürün genişletme ve yeni konseptler', sys: CTX+'\n\nYENİ ÜRÜN modülü: Koku spreyi, manifestasyon kartları, ahşap ürünler. Konsept, fiyat, üretim kolaylığı, viral potansiyel. Türkçe.', chips:['🆕 5 yeni ürün fikri','🧴 Koku spreyi konsepti','🎴 Manifestasyon kartı','🪵 Ahşap ürün fikirleri','📦 Bundle önerileri','🚀 En hızlı lansman'] },
+  biz: { title:'İş Geliştirme', sub:'Büyüme stratejisi ve genel iş tavsiyeleri', sys: CTX+'\n\nİŞ GELİŞTİRME modülü: Haftalık öncelikler, yeni kanallar, influencer, 3M TL roadmap. Türkçe.', chips:['🚀 Bu hafta 3 öncelik','📅 Aylık büyüme planı','🛒 Yeni satış kanalları','🤝 Influencer stratejisi','📊 3M TL ciro roadmap','⚡ Hızlı kazanımlar'] }
 };
 
-let cur = 'content', msgs = [], busy = false;
-let selFormat = { ratio:'1:1', size:'1080x1080' };
-let selTheme = 'minimalist';
-let lastImgBase64 = null;
-
-const THEME_PROMPTS = {
-  minimalist: 'minimalist white clean background, modern product photography, soft natural lighting',
-  lifestyle: 'cozy modern bathroom lifestyle scene, warm home interior, natural daylight',
-  health: 'fresh green natural health wellness aesthetic, organic wood tones, clean air feeling',
-  luxury: 'premium wooden texture luxury feel, warm amber tones, elegant craftsmanship',
-  problem: 'before/after concept, problem solution visual, clear messaging, bold contrast',
-  turkish: 'turkish family home bathroom, warm and welcoming, relatable everyday setting'
-};
-
-function selectFormat(el, ratio, size) {
-  document.querySelectorAll('.format-card').forEach(c => c.classList.remove('selected'));
-  el.classList.add('selected');
-  selFormat = { ratio, size };
-}
-
-function selectTheme(el) {
-  document.querySelectorAll('.theme-card').forEach(c => c.classList.remove('selected'));
-  el.classList.add('selected');
-  selTheme = el.dataset.theme;
-}
+let cur='content', msgs=[], busy=false;
+let selProblem='kabizlik', selFormat='1:1';
+let uploadedBase64=null, lastResultUrl=null;
 
 function setMode(m) {
-  cur = m; msgs = [];
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('btn-' + m).classList.add('active');
-
-  const isImage = m === 'image';
-  document.getElementById('messages').style.display = isImage ? 'none' : 'flex';
-  document.getElementById('image-panel').style.display = isImage ? 'flex' : 'none';
-  document.getElementById('input-area').style.display = isImage ? 'none' : 'block';
-  document.getElementById('model-tag').textContent = isImage ? 'Cloudflare AI' : 'Claude Sonnet';
-
-  if (isImage) {
-    document.getElementById('m-title').textContent = 'Reklam Görseli Üret';
-    document.getElementById('m-sub').textContent = 'Meta\'ya hazır görsel — format ve tema seç';
+  cur=m; msgs=[];
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('btn-'+m).classList.add('active');
+  const isImg = m==='image';
+  document.getElementById('messages').style.display = isImg?'none':'flex';
+  document.getElementById('image-panel').style.display = isImg?'flex':'none';
+  document.getElementById('input-area').style.display = isImg?'none':'block';
+  document.getElementById('model-tag').textContent = isImg?'Replicate Flux Dev':'Claude Sonnet';
+  if (isImg) {
+    document.getElementById('m-title').textContent='Reklam Görseli Üret';
+    document.getElementById('m-sub').textContent='Ürün görselini yükle, AI reklama dönüştürsün';
     return;
   }
-
-  document.getElementById('m-title').textContent = M[m].title;
-  document.getElementById('m-sub').textContent = M[m].sub;
-  document.getElementById('chips').innerHTML = M[m].chips.map(c =>
-    `<button class="chip" onclick="chipSend(this)">${c}</button>`).join('');
-  document.getElementById('messages').innerHTML = `<div class="empty-state" id="empty">
-    <div class="empty-icon">${getIcon(m)}</div>
-    <div class="empty-title">${M[m].title}</div>
-    <div class="empty-desc">${M[m].sub}</div>
-  </div>`;
+  document.getElementById('m-title').textContent=M[m].title;
+  document.getElementById('m-sub').textContent=M[m].sub;
+  document.getElementById('chips').innerHTML=M[m].chips.map(c=>`<button class="chip" onclick="chipSend(this)">${c}</button>`).join('');
+  document.getElementById('messages').innerHTML=`<div class="empty-state" id="empty"><div class="empty-icon">${{content:'📸',ads:'🎯',shopify:'🛍️',seo:'🔍',competitor:'🧭',product:'💡',biz:'📈'}[m]}</div><div class="empty-title">${M[m].title}</div><div class="empty-desc">${M[m].sub}</div></div>`;
 }
 
-function getIcon(m) {
-  return {content:'📸',ads:'🎯',shopify:'🛍️',seo:'🔍',competitor:'🧭',product:'💡',biz:'📈'}[m]||'✦';
+function handleFile(e) {
+  const file = e.target.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    const base64 = ev.target.result.split(',')[1];
+    uploadedBase64 = base64;
+    const zone = document.getElementById('upload-zone');
+    const img = document.getElementById('preview-img');
+    img.src = ev.target.result;
+    img.classList.add('show');
+    zone.classList.add('has-image');
+    document.getElementById('change-btn').style.display='block';
+  };
+  reader.readAsDataURL(file);
+}
+
+function selectProblem(el, p) {
+  document.querySelectorAll('.problem-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected'); selProblem=p;
+}
+
+function selectFormat(el, f) {
+  document.querySelectorAll('.format-btn').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected'); selFormat=f;
 }
 
 async function generateImage() {
-  const note = document.getElementById('extra-note').value.trim();
-  const themePrompt = THEME_PROMPTS[selTheme];
-
-  const prompt = `Professional Meta advertisement photo for AlaTab wooden toilet stool product from Turkey. ${themePrompt}. ${note ? note + '.' : ''} The wooden stool is elegantly positioned, showing its natural wood grain texture and quality craftsmanship. Commercial product photography style, ${selFormat.ratio} aspect ratio composition, high-end advertising quality, Instagram/Facebook ad ready. No text overlay.`;
-
-  document.getElementById('gen-btn').disabled = true;
-  document.getElementById('loading-img').classList.add('show');
-  document.getElementById('img-result').classList.remove('show');
+  if (!uploadedBase64) { alert('Önce bir ürün görseli yükle!'); return; }
+  document.getElementById('gen-btn').disabled=true;
+  document.getElementById('loading-state').classList.add('show');
+  document.getElementById('result-area').classList.remove('show');
 
   try {
-    const res = await fetch(WORKER + 'image', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt })
+    const res = await fetch(WORKER+'image', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ imageBase64: uploadedBase64, problem: selProblem, format: selFormat })
     });
     const data = await res.json();
-
-    if (data.image) {
-      lastImgBase64 = data.image;
-      const imgEl = document.getElementById('generated-img');
-      imgEl.src = 'data:image/png;base64,' + data.image;
-      document.getElementById('copy-hint').innerHTML =
-        `<strong>Meta'ya hazır!</strong> Boyut: ${selFormat.size} · Format: ${selFormat.ratio}<br>
-        İndirip Meta Ads Manager'a yükleyebilirsin. Üzerine Canva'da metin ekleyebilirsin.`;
-      document.getElementById('img-result').classList.add('show');
+    if (data.imageUrl) {
+      lastResultUrl = data.imageUrl;
+      document.getElementById('result-img').src = data.imageUrl;
+      const hints = { kabizlik:'Kabızlık odaklı reklam görseli hazır', hemoroit:'Hemoroit önleme odaklı görsel hazır', kolon:'Kolon sağlığı odaklı görsel hazır', genel:'Genel ürün reklam görseli hazır' };
+      document.getElementById('result-hint').innerHTML=`<strong>${hints[selProblem]}</strong> · Format: ${selFormat} · Meta Ads Manager'a yükleyebilirsin.`;
+      document.getElementById('result-area').classList.add('show');
     } else {
-      alert('Görsel üretilemedi: ' + (data.error || 'Bilinmeyen hata'));
+      alert('Hata: ' + (data.error||'Bilinmeyen hata'));
     }
-  } catch(e) {
-    alert('Bağlantı hatası: ' + e.message);
-  }
+  } catch(e) { alert('Bağlantı hatası: '+e.message); }
 
-  document.getElementById('loading-img').classList.remove('show');
-  document.getElementById('gen-btn').disabled = false;
+  document.getElementById('loading-state').classList.remove('show');
+  document.getElementById('gen-btn').disabled=false;
 }
 
-function downloadImg() {
-  if (!lastImgBase64) return;
+async function downloadResult() {
+  if (!lastResultUrl) return;
+  const res = await fetch(lastResultUrl);
+  const blob = await res.blob();
   const a = document.createElement('a');
-  a.href = 'data:image/png;base64,' + lastImgBase64;
-  a.download = 'alatab-reklam-' + Date.now() + '.png';
+  a.href = URL.createObjectURL(blob);
+  a.download = 'alatab-reklam-'+Date.now()+'.jpg';
   a.click();
 }
 
-function chipSend(el) { document.getElementById('inp').value = el.textContent.trim(); send(); }
-function handleKey(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); } }
-function resize(el) { el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, 120) + 'px'; }
-function esc(t) { return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-function fmt(t) {
-  return esc(t)
-    .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
-    .replace(/\*(.*?)\*/g,'<em>$1</em>')
-    .replace(/^### (.+)/gm,'<strong style="font-size:13px">$1</strong>')
-    .replace(/^## (.+)/gm,'<strong style="font-size:14px">$1</strong>')
-    .replace(/^---$/gm,'<hr style="border:none;border-top:0.5px solid #e8e8ed;margin:10px 0">')
-    .replace(/\n/g,'<br>');
+function chipSend(el){document.getElementById('inp').value=el.textContent.trim();send();}
+function handleKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}}
+function resize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,120)+'px';}
+function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function fmt(t){return esc(t).replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\*(.*?)\*/g,'<em>$1</em>').replace(/^### (.+)/gm,'<strong style="font-size:13px">$1</strong>').replace(/^## (.+)/gm,'<strong style="font-size:14px">$1</strong>').replace(/^---$/gm,'<hr style="border:none;border-top:0.5px solid #e8e8ed;margin:10px 0">').replace(/\n/g,'<br>');}
+function addMsg(role,text){
+  const w=document.getElementById('empty');if(w)w.remove();
+  const el=document.getElementById('messages');
+  const d=document.createElement('div');d.className='msg '+role;
+  d.innerHTML=role==='ai'?`<div class="avatar">AT</div><div class="bubble">${fmt(text)}</div>`:`<div class="avatar">👤</div><div class="bubble">${esc(text)}</div>`;
+  el.appendChild(d);el.scrollTop=el.scrollHeight;
 }
-function addMsg(role, text) {
-  const w = document.getElementById('empty'); if (w) w.remove();
-  const el = document.getElementById('messages');
-  const d = document.createElement('div'); d.className = 'msg ' + role;
-  d.innerHTML = role === 'ai'
-    ? `<div class="avatar">AT</div><div class="bubble">${fmt(text)}</div>`
-    : `<div class="avatar">👤</div><div class="bubble">${esc(text)}</div>`;
-  el.appendChild(d); el.scrollTop = el.scrollHeight;
+function showTyping(){
+  const w=document.getElementById('empty');if(w)w.remove();
+  const el=document.getElementById('messages');
+  const d=document.createElement('div');d.className='msg ai';d.id='typing';
+  d.innerHTML=`<div class="avatar">AT</div><div class="bubble"><div class="dots"><span></span><span></span><span></span></div></div>`;
+  el.appendChild(d);el.scrollTop=el.scrollHeight;
 }
-function showTyping() {
-  const w = document.getElementById('empty'); if (w) w.remove();
-  const el = document.getElementById('messages');
-  const d = document.createElement('div'); d.className = 'msg ai'; d.id = 'typing';
-  d.innerHTML = `<div class="avatar">AT</div><div class="bubble"><div class="dots"><span></span><span></span><span></span></div></div>`;
-  el.appendChild(d); el.scrollTop = el.scrollHeight;
-}
-function rmTyping() { const e = document.getElementById('typing'); if (e) e.remove(); }
-
-async function send() {
-  if (busy) return;
-  const inp = document.getElementById('inp');
-  const text = inp.value.trim(); if (!text) return;
-  inp.value = ''; inp.style.height = 'auto';
-  addMsg('user', text);
-  msgs.push({ role: 'user', content: text });
-  busy = true; document.getElementById('send-btn').disabled = true;
-  showTyping();
-  try {
-    const res = await fetch(WORKER, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages: msgs, mode: M[cur].sys })
-    });
-    const data = await res.json();
-    const reply = data.content?.[0]?.text || 'Hata oluştu.';
-    msgs.push({ role: 'assistant', content: reply });
-    rmTyping(); addMsg('ai', reply);
-  } catch(e) {
-    rmTyping(); addMsg('ai', '⚠️ Bağlantı hatası.');
-  }
-  busy = false; document.getElementById('send-btn').disabled = false;
+function rmTyping(){const e=document.getElementById('typing');if(e)e.remove();}
+async function send(){
+  if(busy)return;
+  const inp=document.getElementById('inp');
+  const text=inp.value.trim();if(!text)return;
+  inp.value='';inp.style.height='auto';
+  addMsg('user',text);msgs.push({role:'user',content:text});
+  busy=true;document.getElementById('send-btn').disabled=true;showTyping();
+  try{
+    const res=await fetch(WORKER,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:msgs,mode:M[cur].sys})});
+    const data=await res.json();
+    const reply=data.content?.[0]?.text||'Hata oluştu.';
+    msgs.push({role:'assistant',content:reply});
+    rmTyping();addMsg('ai',reply);
+  }catch(e){rmTyping();addMsg('ai','⚠️ Bağlantı hatası.');}
+  busy=false;document.getElementById('send-btn').disabled=false;
 }
 </script>
 </body>
